@@ -1,14 +1,56 @@
 <script>
-  var rabbit, turte;
-  function Animal(name, speed, focus) {
+
+var gameStart = function(){
+
+  function Animal(name, speed) {
     this.name = name;
     this.speed = speed;
-    this. focus = focus;
+    this.focus = Math.random();
     this.position = 0;
   }
 
-  rabbit = new Animal("Timmy", 4, 2);
-  turtle = new Animal("Yurtle", 1, 10);
+  var rabbit = new Animal("Robert", 4);
+  var turtle = new Animal("Timmy", 2);
+
+  var rabbitSpeed = Math.round(rabbit.focus * 100);
+  var turtleSpeed = Math.round(turtle.focus * 100);
+
+  var rabbitPerform = rabbitSpeed/100 * rabbit.speed;
+  var turtlePerform = turtleSpeed/100 * turtle.speed;
+
+  var intro1 = alert("Hello and welcome to the 100m race between the rabbit (" + rabbit.name + ") and the turtle ("+ turtle.name + ").");
+  var intro2 = alert(rabbit.name + " will have a max speed of 4mph and " + turtle.name + " will have a max speed of 2mph. In order for them to reach max speed they each need a focus level of 100%, which is very slim.");
+  var intro3 = alert("In this race, although " + rabbit.name + " seems to be faster than " + turtle.name + ", their speeds will also be affected by how focused they are.");
+  var intro4 = alert("The catch is that if " + rabbit.name + " has a focus level less than 50% then its max speed will reduce to 1mph but as for " + turtle.name + ", its max speed stays at 2mph regardless. Click OK to find out today's focus level of both the rabbit and the turtle.")
+  var intro5 = alert("Today " + rabbit.name + " has a focus level of " + rabbitSpeed + "% and " + turtle.name + " has a focus level of " + turtleSpeed + "%! Let the race begin! Click next to see who wins the race!");
+
+    if (rabbitSpeed < 50){
+      rabbit.speed = 1;
+      if (rabbitPerform < turtlePerform){
+        alert(turtle.name + " has won the race!");
+      }else{
+        alert(rabbit.name + " has won the race!");
+      }
+    }else{
+      if (rabbitPerform < turtlePerform){
+        alert(turtle.name + " has won the race!");
+      }else{
+        alert(rabbit.name + " has won the race!");
+      }
+    };
+
+  var gameEnd = function(){
+  var encore = prompt("Would you like to play again? If so type 'yes' or simply press OK. If not press cancel.").toUpperCase();
+    if (encore = "YES") {
+      gameStart();
+    }else{
+      return;
+    }
+  };
+  gameEnd();
+};
+
+gameStart();
 
 </script>
 
